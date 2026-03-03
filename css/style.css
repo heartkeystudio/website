@@ -406,7 +406,7 @@ footer {
 
 @media (max-width: 768px) {
     .team {
-        grid-template-columns: repeat(2, 220px);
+        grid-template-columns: repeat(2, 190px);
         gap: 30px;
     }
 
