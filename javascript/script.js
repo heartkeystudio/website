@@ -94,6 +94,74 @@ document.addEventListener("DOMContentLoaded", function () {
         // 5000 milissegundos = 5 segundos
         setInterval(scrollNext, 5000);
     }
+
+    // SLIDESHOW NOS CARDS DO TIME
+    const teamMembers = document.querySelectorAll('.team-member');
+    
+    teamMembers.forEach((member) => {
+        const carousel = member.querySelector('.portfolio-carousel');
+        const dots = member.querySelectorAll('.portfolio-dot');
+        const media = carousel.querySelectorAll('img, video');
+        
+        if (media.length === 0) return; // Pula se não houver mídia
+        
+        let currentIndex = 0;
+        let slideInterval;
+        
+        const showSlide = (index) => {
+            // Remove a classe active de todos
+            media.forEach((m) => m.classList.remove('active'));
+            dots.forEach((d) => d.classList.remove('active'));
+            
+            // Adiciona a classe active ao slide atual
+            media[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+        };
+        
+        const nextSlide = () => {
+            const nextIndex = (currentIndex + 1) % media.length;
+            showSlide(nextIndex);
+        };
+        
+        // Inicia o slideshow ao passar o mouse
+        member.addEventListener('mouseenter', () => {
+            slideInterval = setInterval(nextSlide, 2000); // Troca a cada 2 segundos
+        });
+        
+        // Para o slideshow ao tirar o mouse
+        member.addEventListener('mouseleave', () => {
+            clearInterval(slideInterval);
+            showSlide(0); // Volta para o primeiro slide
+        });
+        
+        // Permite clicar nos dots para navegar
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                showSlide(index);
+                slideInterval = setInterval(nextSlide, 2000);
+            });
+        });
+    });
+
+    // Evitar que clicar nos dots (ou nav) dispare a navegação do <a class="team-member">
+    document.querySelectorAll('.portfolio-dot').forEach(dot => {
+        dot.addEventListener('click', function (e) {
+            e.stopPropagation(); // impede propagation para o <a>
+            // opcional: caso já tenha handler para mudar slide, ele roda normalmente
+        });
+    });
+
+    // Também impedir que clicar dentro do container .portfolio-nav propague
+    document.querySelectorAll('.portfolio-nav').forEach(nav => {
+        nav.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+
+    // Caso os controles do slideshow (dots) sejam criados dinamicamente,
+    // garanta que o handler acima seja executado depois da criação dos dots.
 });
 
 

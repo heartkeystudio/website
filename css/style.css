@@ -8,7 +8,7 @@
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     margin: 0;
     padding: 0;
 }
@@ -124,7 +124,7 @@ nav ul li a:hover {
 /* HERO */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,7 +139,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .hero h1 {
@@ -169,7 +169,6 @@ nav ul li a:hover {
         font-size: 1.2rem; /* Reduz o tamanho do parágrafo */
     }
 }
-
 
 /* BOTÃO */
 .btn {
@@ -219,14 +218,14 @@ footer {
     display: flex;
     overflow-x: auto; /* Permite a rolagem horizontal */
     scroll-behavior: smooth; /* Animação de rolagem suave */
-    
+
     /* Mágica do Centramento: */
     /* Define que o container deve ter 'snap points' */
-    scroll-snap-type: x mandatory; 
+    scroll-snap-type: x mandatory;
 
     /* Esconde a barra de rolagem (opcional, mas mais bonito) */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .game-carousel::-webkit-scrollbar {
@@ -251,7 +250,6 @@ footer {
     text-decoration: none; /* Remove o sublinhado do link */
 }
 
-
 .game-card {
     background: #000;
     border-radius: 10px;
@@ -273,10 +271,11 @@ footer {
 
 /* Adicione um efeito de hover para o card */
 .game-card:hover {
-    transform: scale(1.05); /* Aumenta levemente o tamanho do card ao passar o mouse */
+    transform: scale(
+        1.05
+    ); /* Aumenta levemente o tamanho do card ao passar o mouse */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
 }
-
 
 .game-card img {
     width: 100%;
@@ -331,10 +330,10 @@ footer {
     .game-carousel-wrapper {
         width: 100%; /* Ocupa a largura total em telas pequenas */
     }
-    
+
     .game-card {
-        /* Sua regra original para mobile estava 1058px, 
-          o que parece muito largo. 
+        /* Sua regra original para mobile estava 1058px,
+          o que parece muito largo.
           Sugiro usar uma % ou um valor menor.
         */
         width: 90%; /* Faz o card ocupar 90% da tela */
@@ -350,82 +349,184 @@ footer {
 /* SOBRE O TIME */
 .about {
     padding: 40px;
-    background: #222;
+    background: rgba(0, 0, 0, 0.4);
     color: #fff;
     text-align: center;
 }
 
 .about h2 {
     font-size: 2.5rem;
-    color: #ff003c; /* Cor de destaque para o título */
+    color: #ff003c;
 }
 
 .about p {
     font-size: 1.2rem;
     color: #bbb;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 100px;
 }
 
 .team {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    /* Cria 2 colunas de tamanho igual (ou fixo em 280px se preferir) */
+    grid-template-columns: repeat(5, 280px);
     justify-content: center;
-    gap: 30px;
+    gap: 20px; /* Aumentei um pouco para o efeito de "espaço entre peças" ficar nítido */
+    margin: 0 auto;
 }
 
 .team-member {
-    background: #333;
-    border-radius: 10px;
-    padding: 20px;
-    width: 280px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;  /* Garante que o conteúdo seja empilhado verticalmente */
-    justify-content: space-between;  /* Garante que o conteúdo ocupe o espaço disponível */
-    align-items: center; /* Adiciona para centralizar os itens no eixo horizontal */
+    display: block; /* permite que o <a> se comporte como card */
+    color: inherit; /* mantém cor do texto */
+    text-decoration: none; /* remove sublinhado padrão do link */
+    position: relative; /* necessário para positioning interno */
+    z-index: 1; /* mantém o card acima de elementos de fundo */
+    background-image: url("../images/portfolio/sky.gif");
+    background-size: 210%;
+    border-radius: 15px;
+
+    background-attachment: fixed; /* A imagem não se move com o scroll do card */
+    background-position: center; /* Centraliza a imagem na tela */
+    background-size: cover; /* Faz a imagem cobrir a tela toda */
+
+    /* Overlay para garantir que o texto continue legível sobre a imagem */
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    position: relative;
+    overflow: hidden; /* Garante que o conteúdo interno não quebre o card */
+    border: 2px solid rgba(0, 234, 255, 0.2); /* Um brilho sutil nas bordas das "peças" */
 }
 
 .team-member:hover {
-    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+    transform: scale(1.5);
+    z-index: 10;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-.team-member img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* Faz a imagem ser circular */
+.team-member-content {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-member-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.team-member-info p {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.team-member-portfolio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    padding: 0;
+    margin: 0; /* Adicionar margin: 0 */
+}
+
+.portfolio-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Adicionar margin: 0 */
+}
+
+.portfolio-carousel img,
+.portfolio-carousel video {
+    width: 100%; /* Adicionar largura 100% */
+    height: 100%; /* Adicionar altura 100% */
+    object-fit: cover; /* Manter proporção e preencher */
+    border-radius: 10px; /* Remover border-radius */
+    display: none;
+    z-index: 1;
+}
+
+.portfolio-carousel img.active,
+.portfolio-carousel video.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.portfolio-nav {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0; /* Remover margin-top */
+    z-index: 1; /* Adicionar z-index para ficar acima das imagens */
+}
+
+.portfolio-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.portfolio-dot.active {
+    background: #00eaff;
+}
+
+.team-member:hover .team-member-info {
+    opacity: 0;
+}
+
+.team-member:hover .team-member-portfolio {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Aplicar estilo apenas à imagem de perfil */
+.team-member-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     margin-bottom: 15px;
-    object-fit: cover; /* Garante que a imagem ocupe bem o espaço da imagem circular */
+    object-fit: cover;
 }
 
-.team-member h3 {
-    font-size: 1.5rem;
-    color: #00eaff; /* Cor de destaque para o nome */
-    margin: 10px 0;
-}
-
-.team-member p {
-    font-size: 1rem;
-    color: #bbb;
-    margin-bottom: 20px;
-    flex-grow: 1;  /* Permite que o texto ocupe o espaço disponível */
-}
-
-.team-member .btn {
-    background-color: #ff003c;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-top: auto; /* Garante que o botão fique no final do card */
-}
-
-.team-member .btn:hover {
-    background-color: #00eaff; /* Cor de hover */
-}
 /* CONTATO */
 .contact {
     padding: 40px;
@@ -440,8 +541,12 @@ footer {
 }
 
 .contact ul {
-    list-style: none;
-    padding: 0;
+    justify-content: center;
+    display: flex;
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    gap: 20px;
+    list-style: circle;
 }
 
 .contact ul li {
@@ -453,3 +558,36 @@ footer {
     text-decoration: none;
 }
 
+/* --- Fix: garante que o botão fique sempre por cima --- */
+
+/* Coloca o card em um stacking context acima do header e outros elementos */
+.team-member {
+    position: relative; /* já estava definido */
+    z-index: 1; /* garante que todo o card fique acima de headers com z-index 1000 */
+}
+
+/* Botão sempre acima do slideshow e clicável */
+.team-member > .btn {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2120; /* acima do card e do slideshow */
+    margin: 0;
+    display: inline-block;
+    pointer-events: auto;
+}
+
+/* Slideshow permanece abaixo do botão */
+.team-member-portfolio {
+    z-index: 2110; /* abaixo do card z-index do botão (agora não há botão) */
+}
+
+/* Se quiser que os dots fiquem visíveis por cima das imagens */
+.portfolio-nav {
+    z-index: 2120;
+    pointer-events: auto;
+}
+.portfolio-dot {
+    pointer-events: auto;
+}

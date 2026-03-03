@@ -1,191 +1,589 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta name="generator" content="Hugo 0.145.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HeartKey Studio</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-    <div class="logo">
-        <img src="images/logo.jpg" alt="HeartKey Productions">
-        <div class="logo-title">
-            <h1>HeartKey</h1>
-            <h2>Studio</h2>
-        </div>
-    </div>
-
-    <!-- Botão de menu hambúrguer -->
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-
-    <section class="hero">
-        <video autoplay loop muted>
-            <source src="videos/hero-video.webm" type="video/webm">
-            <source src="videos/hero-video.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
-        </video>
-        <p id="text_changer">WE PUT OUR HEARTS INTO THAT!</p>
-    </section>
-
-<section id="games" class="games">
-    <h2>Games</h2>
-
-    <div class="game-carousel-wrapper">
-
-        <button class="scroll-btn prev" id="prev-game" aria-label="Previous Game">
-            &#10094;
-        </button>
-
-        <div class="game-carousel">
-            <div class="game-list">
-                <a href="https://heartkey.itch.io/freakhunter" class="game-card">
-                    <img src="images/lil-freak-hunter-thumb.webp" alt="Lil Freak Hunter">
-                </a>
-                <a href="https://heartkey.itch.io/freakhunter" class="game-card">
-                    <img src="images/freak-hunter-thumb.webp" alt="Freak Hunter">
-                </a>
-                <a href="https://leoriostar2.itch.io/kirokiro-bobon" class="game-card">
-                    <img src="images/kirokiro-bobon-thumb.webp" alt="KiroKiro BoBon">
-                </a>
-                <a href="https://heartkey.itch.io/clayton-and-the-evil-treasure" class="game-card">
-                    <img src="images/clayton-and-the-evil-treasures-thumb.webp" alt="Clayton And the evil treasures">
-                </a>
+    <head>
+        <meta name="generator" content="Hugo 0.145.0" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HeartKey Studio</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="images/logo.jpg" alt="HeartKey Productions" />
+                <div class="logo-title">
+                    <h1>HeartKey</h1>
+                    <h2>Studio</h2>
                 </div>
-        </div>
+            </div>
 
-        <button class="scroll-btn next" id="next-game" aria-label="Next Game">
-            &#10095;
-        </button>
+            <!-- Botão de menu hambúrguer -->
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-    </div>
-</section>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>We are a passionate team of creators dedicated to bringing immersive experiences to life through games. Our team combines art, sound, and code to craft unique stories and experiences.</p>
-    
-    <div class="team">
-        <!-- Membro 1 -->
-        <div class="team-member">
-            <img src="images/member1.jpg" alt="Membro 1">
-            <h3>Allan Ortega</h3>
-            <p>Lead Developer & Project creator</p>
-            <a href="https://www.linkedin.com/in/allanortega/" class="btn">Visit Portfolio</a>
-        </div>
+        <section class="hero">
+            <video autoplay loop muted>
+                <source src="videos/hero-video.webm" type="video/webm" />
+                <source src="videos/hero-video.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos.
+            </video>
+            <p id="text_changer">WE PUT OUR HEARTS INTO THAT!</p>
+        </section>
 
-        <!-- Membro 2 -->
-        <div class="team-member">
-            <img src="images/member2.jpg" alt="Membro 2">
-            <h3>Julia Mendes</h3>
-            <p>Producer & Sound Designer</p>
-            <a href="https://www.linkedin.com/in/juliamendes0/" class="btn">Visit Portfolio</a>
-        </div>
+        <section id="games" class="games">
+            <h2>🎯 Games</h2>
 
-		<!-- Membro 3 -->
-        <div class="team-member">
-            <img src="images/member3.jpg" alt="Membro 3">
-            <h3>Jonathan Aguiar</h3>
-            <p>Visual Artist</p>
-            <a href="https://www.linkedin.com/in/jonathan-s-aguiar-662693302/" class="btn">Visit Portfolio</a>
-        </div>
+            <div class="game-carousel-wrapper">
+                <button
+                    class="scroll-btn prev"
+                    id="prev-game"
+                    aria-label="Previous Game"
+                >
+                    &#10094;
+                </button>
 
-		<!-- Membro 4 -->
-        <div class="team-member">
-            <img src="images/member4.jpg" alt="Membro 4">
-            <h3>Igor Alves</h3>
-            <p>Game Designer</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
-		
-		<!-- Membro 5 -->
-        <div class="team-member">
-            <img src="images/member5.jpg" alt="Membro 5">
-            <h3>Alexandre Mattos</h3>
-            <p>2D Artist</p>
-            <a href="https://www.linkedin.com/in/alexandre-mattos-borges-da-costa-49184342/" class="btn">Visit Portfolio</a>
-        </div>
+                <div class="game-carousel">
+                    <div class="game-list">
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/lil-freak-hunter-thumb.webp"
+                                alt="Lil Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/freakhunter"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/freak-hunter-thumb.webp"
+                                alt="Freak Hunter"
+                            />
+                        </a>
+                        <a
+                            href="https://leoriostar2.itch.io/kirokiro-bobon"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/kirokiro-bobon-thumb.webp"
+                                alt="KiroKiro BoBon"
+                            />
+                        </a>
+                        <a
+                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
+                            class="game-card"
+                        >
+                            <img
+                                src="images/clayton-and-the-evil-treasures-thumb.webp"
+                                alt="Clayton And the evil treasures"
+                            />
+                        </a>
+                    </div>
+                </div>
 
-		<!-- Membro 6 -->
-        <div class="team-member">
-            <img src="images/member6.jpg" alt="Membro 6">
-            <h3>Lauro </h3>
-            <p>Sound Designer & Music Maker</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+                <button
+                    class="scroll-btn next"
+                    id="next-game"
+                    aria-label="Next Game"
+                >
+                    &#10095;
+                </button>
+            </div>
+        </section>
 
-		<!-- Membro 7 -->
-        <div class="team-member">
-            <img src="images/member7.jpg" alt="Membro 7">
-            <h3>Florent</h3>
-            <p>3D Artist</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+        <section id="about" class="about">
+            <h2>🤓 About Us</h2>
+            <p>
+                We are a passionate team of creators dedicated to bringing
+                immersive experiences to life through games. Our team combines
+                art, sound, and code to craft unique stories and experiences.
+            </p>
 
-		<!-- Membro 8 -->
-        <div class="team-member">
-            <img src="images/member8.jpg" alt="Membro 8">
-            <h3>Mads</h3>
-            <p>2D Artist</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+            <div class="team">
+                <!-- Membro 1 -->
+                <a
+                    class="team-member"
+                    href="https://www.linkedin.com/in/allanortega/"
+                >
+                    <div class="team-member-content">
+                        <div class="team-member-info">
+                            <img src="images/member1.jpg" alt="Allan Ortega" />
+                            <h3>Allan Ortega</h3>
+                            <p>Lead Developer & Project creator</p>
+                        </div>
 
-		<!-- Membro 9 -->
-        <div class="team-member">
-            <img src="images/member9.jpg" alt="Membro 9">
-            <h3>Thomas</h3>
-            <p>Music Maker</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+                        <!-- Slideshow -->
+                        <div class="team-member-portfolio">
+                            <div class="portfolio-carousel">
+                                <img
+                                    src="images/portfolio/allan1.gif"
+                                    alt="Work 1"
+                                    class="active"
+                                />
+                                <img
+                                    src="images/portfolio/allan2.jpg"
+                                    alt="Work 2"
+                                />
+                                <img
+                                    src="images/portfolio/allan3.gif"
+                                    alt="Work 3"
+                                />
+                            </div>
+                            <div class="portfolio-nav">
+                                <span class="portfolio-dot active"></span>
+                                <span class="portfolio-dot"></span>
+                                <span class="portfolio-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
-		<!-- Membro 10 -->
-        <div class="team-member">
-            <img src="images/member10.jpg" alt="Membro 10">
-            <h3>Thiago Carlo</h3>
-            <p>Music Maker</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+                <!-- Membro 2 -->
+                <a
+                    class="team-member"
+                    href="https://www.linkedin.com/in/juliamendes0/"
+                >
+                    <div class="team-member-content">
+                        <div class="team-member-info">
+                            <img src="images/member2.jpg" alt="Membro 2" />
+                            <h3>Julia Mendes</h3>
+                            <p>Producer & Sound Designer</p>
+                        </div>
+                    </div>
+                </a>
 
-		<!-- Membro 11 -->
-        <div class="team-member">
-            <img src="images/member11.jpg" alt="Membro 11">
-            <h3>Thiago</h3>
-            <p>Developer & 2D Artist</p>
-            <a href="https://www.linkedin.com/" class="btn">Visit Portfolio</a>
-        </div>
+                <!-- Membro 3 -->
+                <a
+                    class="team-member"
+                    href="https://www.linkedin.com/in/jonathan-s-aguiar-662693302/"
+                >
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member3.jpg" alt="Membro 3" />
+                            <h3>Jonathan Aguiar</h3>
+                            <p>Visual Artist</p>
+                        </div>
+                    </div>
+                </a>
 
-        <!-- Adicione outros membros aqui -->
-    </div>
-</section>
+                <!-- Membro 4 -->
+                <a class="team-member" href="https://www.linkedin.com/">
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member4.jpg" alt="Membro 4" />
+                            <h3>Igor Alves</h3>
+                            <p>Game Designer</p>
+                        </div>
+                    </div>
+                </a>
 
+                <!-- Membro 5 -->
+                <a
+                    class="team-member"
+                    href="https://www.linkedin.com/in/alexandre-mattos-borges-da-costa-49184342/"
+                >
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member5.jpg" alt="Membro 5" />
+                            <h3>Alexandre Mattos</h3>
+                            <p>2D Artist</p>
+                        </div>
 
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Contact HeartKey Productions through the following means:</p>
-    <ul>
-        <li><a href="mailto:heartkeyestudio@gmail.com">Email</a></li>
-        <li><a href="https://x.com/HeartKeyProd" target="_blank">Twitter</a></li>
-        <li><a href="https://www.instagram.com/heartkey.studio" target="_blank">Instagram</a></li>
-    </ul>
-</section>
+                        <!-- Slideshow de Trabalhos -->
+                        <div class="team-member-portfolio">
+                            <div class="portfolio-carousel">
+                                <img
+                                    src="images/portfolio/alexandre1.jpg"
+                                    alt="Work 1"
+                                    class="active"
+                                />
+                                <img
+                                    src="images/portfolio/alexandre2.jpg"
+                                    alt="Work 2"
+                                />
+                                <img
+                                    src="images/portfolio/alexandre3.gif"
+                                    alt="Work 3"
+                                />
+                            </div>
+                            <div class="portfolio-nav">
+                                <span class="portfolio-dot active"></span>
+                                <span class="portfolio-dot"></span>
+                                <span class="portfolio-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
+                <!-- Membro 6 -->
+                <a class="team-member" href="https://www.linkedin.com/">
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member6.jpg" alt="Membro 6" />
+                            <h3>Lauro</h3>
+                            <p>Sound Designer & Music Maker</p>
+                        </div>
+                    </div>
+                </a>
 
+                <!-- Membro 7 -->
+                <a class="team-member" href="https://www.linkedin.com/">
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member7.jpg" alt="Membro 7" />
+                            <h3>Florent</h3>
+                            <p>3D Artist</p>
+                        </div>
 
-    <footer>
-        <p>&copy; 2025 HeartKey Productions</p>
-    </footer>
-    <script src="javascript/script.js"></script>
-</body>
+                        <!-- Slideshow de Trabalhos -->
+                        <div class="team-member-portfolio">
+                            <div class="portfolio-carousel">
+                                <img
+                                    src="images/portfolio/florent1.jpg"
+                                    alt="Work 1"
+                                    class="active"
+                                />
+                            </div>
+                            <div class="portfolio-nav">
+                                <span class="portfolio-dot active"></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Membro 8 -->
+                <a class="team-member" href="https://www.linkedin.com/">
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member8.jpg" alt="Membro 8" />
+                            <h3>Mads</h3>
+                            <p>2D Artist</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Membro 9 -->
+                <a class="team-member" href="https://www.linkedin.com/">
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member9.jpg" alt="Membro 9" />
+                            <h3>Thomas</h3>
+                            <p>Music Maker</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Membro 10 -->
+                <a
+                    class="team-member"
+                    href="https://www.instagram.com/thigoapxl"
+                >
+                    <div class="team-member-content">
+                        <!-- Conteúdo Normal -->
+                        <div class="team-member-info">
+                            <img src="images/member11.jpg" alt="Membro 11" />
+                            <h3>Thiago</h3>
+                            <p>Developer & 2D Artist</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Adicione outros membros aqui -->
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <p>Contact HeartKey Productions through the following means:</p>
+            <ul>
+                <li><a href="mailto:heartkeyestudio@gmail.com">✉️ Email</a></li>
+                <li>
+                    <a href="https://x.com/HeartKeyProd" target="_blank"
+                        >🐦 Twitter (X)</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://www.instagram.com/heartkey.studio"
+                        target="_blank"
+                        >📷 Instagram</a
+                    >
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 HeartKey Studio</p>
+        </footer>
+        <script src="javascript/script.js"></script>
+    </body>
 </html>
-
