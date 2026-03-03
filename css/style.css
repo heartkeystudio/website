@@ -404,9 +404,20 @@ footer {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 768px) {
+    .team {
+        grid-template-columns: repeat(2, 250px);
+        gap: 30px;
+    }
+
+    .team-member:hover {
+        transform: scale(1.3);
+    }
+}
+
 .team-member-content {
     position: relative;
-    width: 300px;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
