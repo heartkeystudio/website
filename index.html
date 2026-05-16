@@ -1,589 +1,1219 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta name="generator" content="Hugo 0.145.0" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HeartKey Studio</title>
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="images/logo.jpg" alt="HeartKey Productions" />
-                <div class="logo-title">
-                    <h1>HeartKey</h1>
-                    <h2>Studio</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartKey Studio - Crafted with Love</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --heart-red: #E63946; /* Vermelho apaixonado */
+            --magic-purple: #2B0A3D; /* Roxo escuro para textos fortes */
+            --bg-canvas: #FAFAFA;
+            --dot-color: rgba(43, 10, 61, 0.08); /* Pontinhos roxos bem sutis */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-canvas);
+            /* O SEGREDO DO DESIGN: Fundo pontilhado estilo prancheta/sketchbook */
+            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--magic-purple);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAVBAR */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 20px 0;
+            background: rgba(250, 250, 250, 0.85); /* Translúcido */
+            backdrop-filter: blur(8px); /* Efeito de vidro */
+            z-index: 1000;
+            border-bottom: 1px dashed rgba(43, 10, 61, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--magic-purple);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--magic-purple);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--heart-red); }
+
+        .btn-nav {
+            border: 2px solid var(--magic-purple);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+        .btn-nav:hover { background: var(--magic-purple); color: #fff !important; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-header { margin-bottom: 80px; position: relative; }
+
+        .tag-sketch {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            color: var(--heart-red);
+            transform: rotate(-3deg);
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .title-minimal {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        /* O detalhe vermelho no texto */
+        .highlight-red { color: var(--heart-red); }
+
+        .subtitle-clean {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #555;
+            max-width: 650px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* Botões */
+        .btn-group { display: flex; gap: 20px; align-items: center; }
+        
+        .btn-solid {
+            background: var(--heart-red);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+        .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(230, 57, 70, 0.4); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--magic-purple);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--magic-purple);
+            transition: 0.3s;
+        }
+        .btn-outline:hover { background: var(--magic-purple); color: #fff; }
+
+        /* LAYOUT DIVIDIDO */
+        .services-layout {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .services-nav { flex: 1; display: flex; flex-direction: column; gap: 25px; }
+
+        .service-item {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            padding-left: 0;
+            line-height: 1;
+        }
+
+        .service-item:hover { color: var(--magic-purple); padding-left: 20px; }
+        .service-item.active { color: var(--magic-purple); padding-left: 35px; }
+
+        .service-item::before {
+            content: '♡'; /* Coração como bullet point */
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            opacity: 0;
+            color: var(--heart-red);
+            transition: 0.3s;
+        }
+        .service-item.active::before { opacity: 1; }
+
+        .service-desc {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 300;
+            max-width: 300px;
+            margin-top: 10px;
+            display: none;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .service-item.active .service-desc { display: block; opacity: 1; }
+
+        /* A Prancheta Visual */
+        .services-display {
+            flex: 1.2;
+            position: relative;
+            height: 550px;
+            border: 2px solid var(--magic-purple);
+            border-radius: 4px 255px 3px 25px / 255px 5px 225px 3px; /* Borda hand-drawn */
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 15px 15px 0px rgba(230, 57, 70, 0.15); /* Sombra Vermelha */
+        }
+
+        .display-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.6s ease, transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        .display-media.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+
+        .handwritten-note {
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--heart-red);
+            transform: rotate(-5deg);
+        }
+
+        @media (max-width: 900px) {
+            .services-layout { flex-direction: column; }
+            .title-minimal { font-size: 3rem; }
+            .services-display { width: 100%; height: 400px; }
+        }
+
+        /* ==========================================
+           4. SEÇÃO DE JOGOS (GALERIA DE OBRAS)
+           ========================================== */
+        .games-section {
+            padding: 100px 20px;
+            background: #fff; /* Fundo totalmente branco para dar contraste com o canvas pontilhado */
+            border-top: 2px solid var(--magic-purple);
+            border-bottom: 2px solid var(--magic-purple);
+            position: relative;
+        }
+
+        /* Um enfeite estilo fita adesiva (Washi Tape) para prender a seção */
+        .tape-deco {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 150px;
+            height: 30px;
+            background: rgba(230, 57, 70, 0.2); /* Fita vermelha translúcida */
+            backdrop-filter: blur(2px);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            border: 2px solid var(--magic-purple);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-canvas);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 8px 8px 0px rgba(43, 10, 61, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 15px 15px 0px rgba(230, 57, 70, 0.2); /* Sombra fica vermelha no hover */
+            border-color: var(--heart-red);
+        }
+
+        /* Container da imagem do jogo */
+        .game-thumb-container {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--magic-purple);
+        }
+
+        /* A imagem de capa estática */
+        .game-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        /* O gameplay em vídeo/gif que aparece no hover */
+        .game-gameplay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .game-card:hover .game-cover { opacity: 0; }
+        .game-card:hover .game-gameplay { opacity: 1; }
+
+        .game-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--magic-purple);
+        }
+
+        .game-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .game-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+        }
+
+        .game-tags span {
+            font-size: 0.75rem;
+            background: rgba(43, 10, 61, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--magic-purple);
+        }
+
+        .handwritten-arrow {
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: var(--heart-red);
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+
+        /* Destaque para o jogo principal (Ocupa 2 colunas se tiver espaço) */
+        .game-card.featured {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .game-card.featured .game-thumb-container {
+            width: 60%;
+            height: 350px;
+            border-bottom: none;
+            border-right: 2px solid var(--magic-purple);
+        }
+
+        .game-card.featured .game-info {
+            width: 40%;
+            justify-content: center;
+        }
+
+        @media (max-width: 800px) {
+            .game-card.featured { flex-direction: column; }
+            .game-card.featured .game-thumb-container { width: 100%; border-right: none; border-bottom: 2px solid var(--magic-purple); }
+            .game-card.featured .game-info { width: 100%; }
+        }
+
+        /* ==========================================
+           5. SEÇÃO DA EQUIPE (A GUILDA)
+           ========================================== */
+        .team-section {
+            padding: 100px 20px;
+            position: relative;
+            /* Voltamos pro fundo pontilhado aqui, pois saímos do bloco branco dos jogos */
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-top: 60px;
+            padding-bottom: 50px;
+        }
+
+        /* O estilo Polaroid */
+        .team-member {
+            background: #fff;
+            padding: 15px 15px 25px 15px;
+            border-radius: 2px;
+            box-shadow: 5px 10px 20px rgba(43, 10, 61, 0.08);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23E63946" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'), auto; /* Cursor de lápis foda! */
+        }
+
+        /* Espalhando as fotos de forma orgânica na mesa */
+        .team-member:nth-child(odd) { transform: rotate(-3deg); }
+        .team-member:nth-child(even) { transform: rotate(4deg); margin-top: 20px; }
+        .team-member:nth-child(3n) { transform: rotate(-1deg); margin-top: -15px; }
+
+        .team-member:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            box-shadow: 15px 20px 30px rgba(230, 57, 70, 0.15);
+            z-index: 10;
+        }
+
+        /* A tachinha vermelha (Pin) segurando a foto */
+        .pin-deco {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--heart-red);
+            border-radius: 50%;
+            box-shadow: -2px 5px 5px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        .member-photo-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            position: relative;
+            background: #eee;
+            margin-bottom: 15px;
+            border-radius: 2px;
+            filter: grayscale(100%) contrast(1.2); /* Foto em P&B pro clima de rascunho */
+            transition: 0.4s ease;
+        }
+
+        .team-member:hover .member-photo-container {
+            filter: grayscale(0%); /* Volta a cor no hover */
+        }
+
+        .photo-real, .photo-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* O avatar fica escondido por padrão */
+        .photo-avatar { opacity: 0; }
+
+        /* Magia do hover: SOME a foto real, APARECE o avatar Pixel/3D */
+        .team-member:hover .photo-real { opacity: 0; }
+        .team-member:hover .photo-avatar { opacity: 1; }
+
+        .member-info { text-align: center; }
+        
+        .member-name {
+            font-family: 'Caveat', cursive; /* Nome assinado à mão! */
+            font-size: 1.8rem;
+            color: var(--magic-purple);
+            line-height: 1;
+        }
+
+        .member-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #888;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           6. CONTATO E FOOTER (O CADERNO)
+           ========================================== */
+        .contact-section {
+            padding: 80px 20px 100px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .notebook-paper {
+            background-color: #fff;
+            width: 100%;
+            max-width: 750px;
+            padding: 60px 40px 50px 80px; /* O padding maior na esquerda afasta o texto da linha vermelha */
+            position: relative;
+            box-shadow: 10px 15px 30px rgba(43, 10, 61, 0.08);
+            transform: rotate(-1.5deg); /* Folha jogada torta na mesa */
+            
+            /* A MÁGICA DAS LINHAS: Desenha a margem vermelha e as linhas azuis/cinzas horizontais */
+            background-image: 
+                linear-gradient(90deg, transparent 60px, rgba(230, 57, 70, 0.3) 60px, rgba(230, 57, 70, 0.3) 62px, transparent 62px),
+                linear-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 100% 100%, 100% 2.5rem; /* O 2.5rem define a altura das linhas */
+            line-height: 2.5rem;
+        }
+
+        /* O durex/fita segurando a folha */
+        .notebook-paper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            width: 120px;
+            height: 35px;
+            background: rgba(230, 57, 70, 0.15);
+            backdrop-filter: blur(2px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .notebook-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            /* Removemos a borda para o texto "sentar" em cima da linha desenhada pelo background */
+            padding: 5px 0;
+            font-family: 'Caveat', cursive; /* Fonte de mão! */
+            font-size: 1.8rem;
+            color: var(--magic-purple);
+            outline: none;
+            height: 2.5rem; /* Exatamente a altura da linha do caderno */
+        }
+
+        textarea.notebook-input {
+            resize: none;
+            height: 7.5rem; /* 3 linhas de altura (2.5 * 3) */
+            line-height: 2.5rem;
+            margin-top: 5px;
+        }
+
+        .notebook-input::placeholder {
+            color: #bbb;
+            font-family: 'Caveat', cursive;
+        }
+
+        /* O botão de enviar parece um rabisco de marcador */
+        .submit-btn {
+            align-self: flex-end;
+            margin-top: 20px;
+            background: var(--heart-red);
+            color: #fff;
+            border: none;
+            padding: 5px 30px;
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            border-radius: 3px 25px 5px 25px / 25px 3px 25px 5px; /* Bordas orgânicas */
+            cursor: pointer;
+            transition: 0.3s;
+            transform: rotate(-3deg);
+            box-shadow: 4px 4px 0px rgba(43, 10, 61, 0.1);
+        }
+
+        .submit-btn:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 6px 6px 0px rgba(43, 10, 61, 0.15);
+        }
+
+        /* FOOTER FINAL */
+        .site-footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #888;
+            padding-bottom: 30px;
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+        }
+
+        .footer-links a { color: var(--heart-red); text-decoration: none; transition: 0.2s;}
+        .footer-links a:hover { color: var(--magic-purple); transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .form-row { flex-direction: column; gap: 0; }
+            .notebook-paper { padding: 50px 20px 40px 50px; }
+        }
+
+        /* ==========================================
+           7. ANIMAÇÕES DE SCROLL (FADE IN)
+           ========================================== */
+        /* Estado inicial invisível e empurrado para baixo */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+
+        /* Classe que o JavaScript vai adicionar quando aparecer na tela */
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efeito escadinha (Stagger) para itens lado a lado */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ==========================================
+           8. BOTÃO VOLTAR AO TOPO
+           ========================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--bg-canvas);
+            color: var(--heart-red);
+            border: 2px solid var(--heart-red);
+            padding: 8px 18px;
+            /* Borda orgânica pra parecer que foi cortada com tesoura/desenhada */
+            border-radius: 2px 25px 3px 20px / 25px 2px 20px 3px; 
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 4px 4px 0px rgba(230, 57, 70, 0.15);
+            
+            /* Estado inicial: escondido e afundado */
+            opacity: 0;
+            transform: translateY(30px) rotate(5deg);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Classe que o JS ativa quando rola a tela */
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(-3deg); /* Fica tortinho */
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.1);
+            background: var(--heart-red);
+            color: #fff;
+            box-shadow: 6px 8px 0px rgba(230, 57, 70, 0.2);
+        }
+
+        .arrow-up {
+            font-size: 1.8rem;
+            line-height: 0.8;
+            margin-bottom: -2px;
+        }
+
+        /* ==========================================
+           9. HERO ART (A CHAVE FLUTUANTE)
+           ========================================== */
+        .hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-art-floating {
+            position: absolute;
+            right: 0;
+            top: -20px;
+            width: 250px; 
+            z-index: 1;
+            pointer-events: none; 
+            /* A chave inteira vai tremer junta aqui */
+            animation: boiling-lines 1.2s steps(3) infinite;
+            /* E vamos adicionar uma sombra projetada que treme no sentido contrário */
+            filter: drop-shadow(5px 5px 0px rgba(43, 10, 61, 0.15));
+        }
+
+        /* Movimentos super sutis de Stop Motion */
+        @keyframes boiling-lines {
+            0% { transform: translate(0, 0) rotate(0deg); filter: drop-shadow(5px 5px 0px rgba(43, 10, 61, 0.15)); }
+            33% { transform: translate(-1px, 1px) rotate(-0.5deg); filter: drop-shadow(4px 6px 0px rgba(43, 10, 61, 0.10)); }
+            66% { transform: translate(1px, -1px) rotate(0.5deg); filter: drop-shadow(6px 4px 0px rgba(43, 10, 61, 0.20)); }
+            100% { transform: translate(0, 0) rotate(0deg); filter: drop-shadow(5px 5px 0px rgba(43, 10, 61, 0.15)); }
+        }
+
+        /* ==========================================
+           10. AJUSTES PARA MOBILE (TELEMÓVEL)
+           ========================================== */
+        @media (max-width: 768px) {
+            /* 1. Navbar: Escondemos os links secundários para não esmagar a logo */
+            .nav-links a:not(.btn-nav) { display: none; }
+            .nav-container { padding: 0 15px; }
+
+            /* 2. Hero (Topo): Organiza a Chave e o Texto */
+            .hero-header { flex-direction: column-reverse; text-align: center; }
+            /* Coloca a chave acima do texto e mais pequena */
+            .hero-art-floating { 
+                position: relative; 
+                top: 0; right: 0; 
+                width: 220px; 
+                margin: 0 auto -20px auto; 
+            }
+            .hero-text-content { z-index: 2; position: relative; }
+            .title-minimal { font-size: 2.8rem; }
+            
+            /* Botões ocupam 100% da largura no telemóvel */
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn-group a { width: 100%; text-align: center; }
+
+            /* 3. Serviços: Força a caixa de imagens a ter largura e diminui a altura */
+            .services-layout > div:nth-child(2) { width: 100% !important; }
+            .services-display { height: 300px; border-radius: 15px; }
+
+            /* 4. O Caderno: Ajusta a margem e o tamanho da fonte para não vazar a tela */
+            .notebook-paper { 
+                padding: 40px 15px 30px 40px; /* Reduz o espaçamento lateral */
+                transform: rotate(0deg); /* Tira a rotação no telemóvel para não criar barras de scroll horizontais */
+                /* Desenha a margem vermelha mais para a esquerda (30px) */
+                background-image: 
+                    linear-gradient(90deg, transparent 30px, rgba(230, 57, 70, 0.3) 30px, rgba(230, 57, 70, 0.3) 32px, transparent 32px),
+                    linear-gradient(#e5e5e5 1px, transparent 1px);
+            }
+            .notebook-paper h3 { font-size: 2rem !important; }
+            .notebook-paper p { font-size: 1.2rem !important; line-height: 1.8rem !important; margin-bottom: 20px;}
+            .notebook-input { font-size: 1.4rem; }
+            
+            /* O botão de enviar fica largo e alinhado */
+            .submit-btn { width: 100%; font-size: 1.6rem; transform: rotate(0deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <div class="nav-container">
+            <div class="nav-logo">HeartKey<span style="color: var(--heart-red);">.</span></div>
+            
+            <div class="nav-links">
+                <a href="#games">Nossos Jogos</a>
+                <a href="#outsourcing">Serviços</a>
+                <a href="#team">A Guilda</a>
+                <a href="#contact" class="btn-nav">Fale Conosco</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header hero-header fade-in">
+            
+            <div class="hero-text-content">
+                <span class="tag-sketch">Where passion meets creativity</span>
+                <h2 class="title-minimal">Nós forjamos mundos.<br>Feitos com <span class="highlight-red">amor.</span></h2>
+                <p class="subtitle-clean">Somos artistas, programadores e contadores de histórias. Tudo o que fazemos no HeartKey Studio, seja em nossos jogos originais ou no desenvolvimento para parceiros, carrega um pedaço da nossa alma.</p>
+                
+                <div class="btn-group">
+                    <a href="#games" class="btn-solid">🎮 Nossos Jogos</a>
+                    <a href="#outsourcing" class="btn-outline">🛠️ Contratar o Estúdio</a>
                 </div>
             </div>
 
-            <!-- Botão de menu hambúrguer -->
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="hero-art-floating fade-in delay-2">
+                <svg viewBox="0 0 134 273" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"><g id="shape-1628623e-a253-805f-8008-074dd9375bbf"><defs><clipPath id="frame-clip-1628623e-a253-805f-8008-074dd9375bbf-render-1" class="frame-clip frame-clip-def"><rect rx="0" ry="0" x="0" y="0" width="134" height="273" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"/></clipPath></defs><g class="frame-container-wrapper"><g class="frame-container-blur"><g class="frame-container-shadows"><g clip-path="url(#frame-clip-1628623e-a253-805f-8008-074dd9375bbf-render-1)" fill="none"><g class="fills" id="fills-1628623e-a253-805f-8008-074dd9375bbf"><rect rx="0" ry="0" x="0" y="0" width="134" height="273" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background"/></g><g class="frame-children"><g id="shape-1628623e-a253-805f-8008-074d93ed7d3d" rx="0" ry="0"><g id="shape-1628623e-a253-805f-8008-074c4cbebacf"><g class="fills" id="fills-1628623e-a253-805f-8008-074c4cbebacf"><path d="M32,11L52,11L52,31L32,31L32,11M52,21L62,21L62,41L52,41L52,21M22,21L32,21L32,41L22,41L22,21M62,31L72,31L72,51L62,51L62,31M72,21L82,21L82,41L72,41L72,21M102,21L112,21L112,41L102,41L102,21M102,71L112,71L112,91L102,91L102,71M92,81L102,81L102,101L92,101L92,81M82,91L92,91L92,111L82,111L82,91M72,101L82,101L82,121L72,121L72,101M82,201L102,201L102,221L82,221L82,201M82,251L102,251L102,271L82,271L82,251M82,231L92,231L92,241L82,241L82,231M52,101L62,101L62,121L52,121L52,101M62,111L72,111L72,121L62,121L62,111M42,121L92,121L92,131L42,131L42,121M52,131L82,131L82,271L52,271L52,131M42,91L52,91L52,111L42,111L42,91M32,81L42,81L42,101L32,101L32,81M22,71L32,71L32,91L22,91L22,71M112,31L122,31L122,81L112,81L112,31M12,31L22,31L22,81L12,81L12,31M122,41L132,41L132,71L122,71L122,41M2,41L12,41L12,71L2,71L2,41M82,11L102,11L102,31L82,31L82,11" style="fill: rgb(160, 39, 48); fill-opacity: 1;"/></g><g id="strokes-88ca646d-487c-8037-8008-074ed6862695-1628623e-a253-805f-8008-074c4cbebacf" class="strokes"><g class="outer-stroke-shape"><defs><mask id="outer-stroke-render-3-1628623e-a253-805f-8008-074c4cbebacf-0" x="-0.4142135623730949" y="8.585786437626961" width="134.82842712474618" height="264.82842712474707" maskUnits="userSpaceOnUse"><use href="#stroke-shape-render-3-1628623e-a253-805f-8008-074c4cbebacf-0" style="fill: none; stroke: white; stroke-width: 2;"/><use href="#stroke-shape-render-3-1628623e-a253-805f-8008-074c4cbebacf-0" style="fill: black; stroke: none;"/></mask><path d="M32,11L52,11L52,31L32,31L32,11M52,21L62,21L62,41L52,41L52,21M22,21L32,21L32,41L22,41L22,21M62,31L72,31L72,51L62,51L62,31M72,21L82,21L82,41L72,41L72,21M102,21L112,21L112,41L102,41L102,21M102,71L112,71L112,91L102,91L102,71M92,81L102,81L102,101L92,101L92,81M82,91L92,91L92,111L82,111L82,91M72,101L82,101L82,121L72,121L72,101M82,201L102,201L102,221L82,221L82,201M82,251L102,251L102,271L82,271L82,251M82,231L92,231L92,241L82,241L82,231M52,101L62,101L62,121L52,121L52,101M62,111L72,111L72,121L62,121L62,111M42,121L92,121L92,131L42,131L42,121M52,131L82,131L82,271L52,271L52,131M42,91L52,91L52,111L42,111L42,91M32,81L42,81L42,101L32,101L32,81M22,71L32,71L32,91L22,91L22,71M112,31L122,31L122,81L112,81L112,31M12,31L22,31L22,81L12,81L12,31M122,41L132,41L132,71L122,71L122,41M2,41L12,41L12,71L2,71L2,41M82,11L102,11L102,31L82,31L82,11" id="stroke-shape-render-3-1628623e-a253-805f-8008-074c4cbebacf-0"/></defs><use href="#stroke-shape-render-3-1628623e-a253-805f-8008-074c4cbebacf-0" mask="url(#outer-stroke-render-3-1628623e-a253-805f-8008-074c4cbebacf-0)" style="fill: none; stroke-width: 2; stroke: rgb(160, 39, 48); stroke-opacity: 1;"/><use href="#stroke-shape-render-3-1628623e-a253-805f-8008-074c4cbebacf-0" style="fill: none; stroke-width: 1; stroke: none; stroke-opacity: 1;"/></g></g></g><g id="shape-1628623e-a253-805f-8008-074cbfdcb9d7"><g class="fills" id="fills-1628623e-a253-805f-8008-074cbfdcb9d7"><path d="M32,2L52,2L52,22L32,22L32,2M52,12L62,12L62,32L52,32L52,12M22,12L32,12L32,32L22,32L22,12M62,22L72,22L72,42L62,42L62,22M72,12L82,12L82,32L72,32L72,12M102,12L112,12L112,32L102,32L102,12M102,62L112,62L112,82L102,82L102,62M92,72L102,72L102,92L92,92L92,72M82,82L92,82L92,102L82,102L82,82M72,92L82,92L82,112L72,112L72,92M82,192L102,192L102,212L82,212L82,192M82,242L102,242L102,262L82,262L82,242M82,222L92,222L92,232L82,232L82,222M52,92L62,92L62,112L52,112L52,92M62,102L72,102L72,112L62,112L62,102M42,112L92,112L92,122L42,122L42,112M52,122L82,122L82,262L52,262L52,122M42,82L52,82L52,102L42,102L42,82M32,72L42,72L42,92L32,92L32,72M22,62L32,62L32,82L22,82L22,62M112,22L122,22L122,72L112,72L112,22M12,22L22,22L22,72L12,72L12,22M122,32L132,32L132,62L122,62L122,32M2,32L12,32L12,62L2,62L2,32M82,2L102,2L102,22L82,22L82,2" style="fill: rgb(230, 57, 70); fill-opacity: 1;"/></g><g id="strokes-88ca646d-487c-8037-8008-074ed688b4df-1628623e-a253-805f-8008-074cbfdcb9d7" class="strokes"><g class="outer-stroke-shape"><defs><mask id="outer-stroke-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0" x="-0.4142135623730949" y="-0.4142135623730949" width="134.82842712474618" height="264.8284271247471" maskUnits="userSpaceOnUse"><use href="#stroke-shape-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0" style="fill: none; stroke: white; stroke-width: 2;"/><use href="#stroke-shape-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0" style="fill: black; stroke: none;"/></mask><path d="M32,2L52,2L52,22L32,22L32,2M52,12L62,12L62,32L52,32L52,12M22,12L32,12L32,32L22,32L22,12M62,22L72,22L72,42L62,42L62,22M72,12L82,12L82,32L72,32L72,12M102,12L112,12L112,32L102,32L102,12M102,62L112,62L112,82L102,82L102,62M92,72L102,72L102,92L92,92L92,72M82,82L92,82L92,102L82,102L82,82M72,92L82,92L82,112L72,112L72,92M82,192L102,192L102,212L82,212L82,192M82,242L102,242L102,262L82,262L82,242M82,222L92,222L92,232L82,232L82,222M52,92L62,92L62,112L52,112L52,92M62,102L72,102L72,112L62,112L62,102M42,112L92,112L92,122L42,122L42,112M52,122L82,122L82,262L52,262L52,122M42,82L52,82L52,102L42,102L42,82M32,72L42,72L42,92L32,92L32,72M22,62L32,62L32,82L22,82L22,62M112,22L122,22L122,72L112,72L112,22M12,22L22,22L22,72L12,72L12,22M122,32L132,32L132,62L122,62L122,32M2,32L12,32L12,62L2,62L2,32M82,2L102,2L102,22L82,22L82,2" id="stroke-shape-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0"/></defs><use href="#stroke-shape-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0" mask="url(#outer-stroke-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0)" style="fill: none; stroke-width: 2; stroke: rgb(0, 0, 0); stroke-opacity: 1;"/><use href="#stroke-shape-render-4-1628623e-a253-805f-8008-074cbfdcb9d7-0" style="fill: none; stroke-width: 1; stroke: none; stroke-opacity: 1;"/></g></g></g></g></g></g></g></g></g></g></svg>
+            </div>
 
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#games">Games</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        </div>
 
-        <section class="hero">
-            <video autoplay loop muted>
-                <source src="videos/hero-video.webm" type="video/webm" />
-                <source src="videos/hero-video.mp4" type="video/mp4" />
-                Seu navegador não suporta vídeos.
-            </video>
-            <p id="text_changer">WE PUT OUR HEARTS INTO THAT!</p>
-        </section>
+        <div class="services-layout">
+            
+            <div class="services-nav">
+                <div class="service-item active" data-target="art">
+                    Arte & Movimento
+                    <div class="service-desc">Pixel art, modelagem 3D Game Ready, animações fluidas e rigging para Vtubers.</div>
+                </div>
+                <div class="service-item" data-target="code">
+                    Engenharia & Código
+                    <div class="service-desc">Lógica sólida em Unity, Godot e Custom Engines para dar vida à sua ideia sem gargalos.</div>
+                </div>
+                <div class="service-item" data-target="audio">
+                    Imersão & Identidade
+                    <div class="service-desc">Trilhas sonoras originais (OST), SFX, UI/UX Design e criação de Landing Pages.</div>
+                </div>
+                <div class="service-item" data-target="assets">
+                    A Loja da Guilda
+                    <div class="service-desc">Atalhos de alta qualidade: Assets 2D/3D e ferramentas facilitadoras prontas para usar.</div>
+                </div>
+            </div>
 
-        <section id="games" class="games">
-            <h2>🎯 Games</h2>
+            <div style="position: relative; flex: 1.2;">
+                <div class="services-display">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" class="display-media active" id="media-art" alt="Arte">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" class="display-media" id="media-code" alt="Engenharia">
+                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="display-media" id="media-audio" alt="Áudio">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=1000&auto=format&fit=crop" class="display-media" id="media-assets" alt="Assets">
+                </div>
+                <div class="handwritten-note">Passe o mouse para explorar ✨</div>
+            </div>
 
-            <div class="game-carousel-wrapper">
-                <button
-                    class="scroll-btn prev"
-                    id="prev-game"
-                    aria-label="Previous Game"
-                >
-                    &#10094;
-                </button>
+        </div>
+    </section>
 
-                <div class="game-carousel">
-                    <div class="game-list">
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/lil-freak-hunter-thumb.webp"
-                                alt="Lil Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/freakhunter"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/freak-hunter-thumb.webp"
-                                alt="Freak Hunter"
-                            />
-                        </a>
-                        <a
-                            href="https://leoriostar2.itch.io/kirokiro-bobon"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/kirokiro-bobon-thumb.webp"
-                                alt="KiroKiro BoBon"
-                            />
-                        </a>
-                        <a
-                            href="https://heartkey.itch.io/clayton-and-the-evil-treasure"
-                            class="game-card"
-                        >
-                            <img
-                                src="images/clayton-and-the-evil-treasures-thumb.webp"
-                                alt="Clayton And the evil treasures"
-                            />
-                        </a>
+    <section id="games" class="games-section">
+        <div class="tape-deco"></div> <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <span class="tag-sketch" style="color: var(--heart-red);">Feito em casa</span>
+                <h2 class="title-minimal" style="font-size: 3.5rem;">Nossas IPs Originais</h2>
+            </div>
+
+            <div class="games-grid">
+
+                <div class="game-card featured fade-in delay-1">
+                    <div class="handwritten-arrow">Wishlist on Steam! ↘</div>
+                    <div class="game-thumb-container">
+                        <video src="data/video/game/freak-hunter.mp4" class="game-cover" autoplay loop muted playsinline style="object-fit: cover;"></video>
+                        
+                        <video src="data/video/game/freak-hunter-preview.mp4" class="game-gameplay" autoplay loop muted playsinline style="object-fit: cover;"></video>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Freak Hunter</h3>
+                        <p class="game-desc">Nossa carta de amor aos clássicos. Explore uma mansão assombrada onde nada é o que parece. Use suas habilidades sobrenaturais para sobreviver aos moradores originais.</p>
+                        
+                        <div class="game-tags" style="margin-bottom: 20px;">
+                            <span>Horror</span>
+                            <span>Puzzle</span>
+                            <span>Pixel Art</span>
+                        </div>
+                        
+                        <div class="game-footer">
+                            <span style="font-size: 1.2rem; color: var(--magic-purple);">💻 🍎 🐧</span> <a href="https://heartkey.itch.io/freakhunter" class="btn-solid" style="padding: 10px 20px; font-size: 0.9rem;">Ver na Itch.io</a>
+                        </div>
                     </div>
                 </div>
 
-                <button
-                    class="scroll-btn next"
-                    id="next-game"
-                    aria-label="Next Game"
-                >
-                    &#10095;
-                </button>
+                <div class="game-card fade-in delay-1">
+                    <div class="game-thumb-container">
+                        <img src="data/image/game/kirokiro-bobon.png" class="game-cover" alt="KiroKiro BoBon Cover">
+
+                        <video src="data/video/game/kirokiro-bobon-preview.mp4" class="game-gameplay" autoplay loop muted playsinline style="object-fit: cover;"></video>
+
+                      </div>
+                    <div class="game-info">
+                        <h3 class="game-title">KiroKiro BoBon</h3>
+                        <p class="game-desc">Uma explosão de cores e caos! Um jogo de plataforma que esconde segredos sombrios.</p>
+                        <div class="game-footer">
+                            <div class="game-tags"><span>Plataforma</span> <span>Aventura</span></div>
+                            <span style="font-size: 1.2rem;">💻 🎮</span>
+                        </div>
+                        <div class="game-footer">
+                            <span style="font-size: 1.2rem; color: var(--magic-purple);">💻 🍎 🐧</span> <a href="https://leoriostar2.itch.io/kirokiro-bobon" class="btn-solid" style="padding: 10px 20px; font-size: 0.9rem;">Ver na Itch.io</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in delay-1">
+                    <div class="handwritten-arrow">Wishlist on Steam! ↘</div>
+
+                    <div class="game-thumb-container">
+                        <img src="data/image/game/clayton.png" class="game-cover" alt="Clayton Cover">
+                        <video src="data/video/game/clayton-preview.mp4" class="game-gameplay" autoplay loop muted playsinline style="object-fit: cover;"></video>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Clayton & The Evil Treasures</h3>
+                        <p class="game-desc">Derrote todos os adversarios neste boss hush com personagens únicos e estilizados!</p>
+                        <div class="game-footer">
+                            <div class="game-tags"><span>Aventura</span> <span>Arena</span></div>
+                            <span style="font-size: 1.2rem;">💻 🍎</span>
+                        </div>
+                        <div class="game-footer">
+                            <span style="font-size: 1.2rem; color: var(--magic-purple);">💻 🍎 🐧</span> <a href="https://heartkey.itch.io/clayton-and-the-evil-treasure" class="btn-solid" style="padding: 10px 20px; font-size: 0.9rem;">Ver na Itch.io</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in delay-1">
+                    <div class="game-thumb-container">
+                        <img src="data/image/game/lil-freak.png" class="game-cover" alt="Lil Freak Cover">
+                        <video src="data/video/game/lil-freak-preview.mp4" class="game-gameplay" autoplay loop muted playsinline style="object-fit: cover;"></video>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Lil Freak</h3>
+                        <p class="game-desc">Cace aberrações e supere desafios nessa versão mini e arcade do nosso Freak Hunter.</p>
+                        <div class="game-footer">
+                            <div class="game-tags"><span>Aventura</span> <span>Plataforma</span></div>
+                            <span style="font-size: 1.2rem;">💻 🍎</span>
+                        </div>
+                        <div class="game-footer">
+                            <span style="font-size: 1.2rem; color: var(--magic-purple);">💻 🍎 🐧</span> <a href="https://heartkey.itch.io/freak-hunter-gamejam" class="btn-solid" style="padding: 10px 20px; font-size: 0.9rem;">Ver na Itch.io</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="about">
-            <h2>🤓 About Us</h2>
-            <p>
-                We are a passionate team of creators dedicated to bringing
-                immersive experiences to life through games. Our team combines
-                art, sound, and code to craft unique stories and experiences.
-            </p>
-
-            <div class="team">
-                <!-- Membro 1 -->
-                <a
-                    class="team-member"
-                    href="https://www.linkedin.com/in/allanortega/"
-                >
-                    <div class="team-member-content">
-                        <div class="team-member-info">
-                            <img src="images/member1.jpg" alt="Allan Ortega" />
-                            <h3>Allan Ortega</h3>
-                            <p>Lead Developer & Project creator</p>
-                        </div>
-
-                        <!-- Slideshow -->
-                        <div class="team-member-portfolio">
-                            <div class="portfolio-carousel">
-                                <img
-                                    src="images/portfolio/allan1.gif"
-                                    alt="Work 1"
-                                    class="active"
-                                />
-                                <img
-                                    src="images/portfolio/allan2.jpg"
-                                    alt="Work 2"
-                                />
-                                <img
-                                    src="images/portfolio/allan3.gif"
-                                    alt="Work 3"
-                                />
-                            </div>
-                            <div class="portfolio-nav">
-                                <span class="portfolio-dot active"></span>
-                                <span class="portfolio-dot"></span>
-                                <span class="portfolio-dot"></span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 2 -->
-                <a
-                    class="team-member"
-                    href="https://www.linkedin.com/in/juliamendes0/"
-                >
-                    <div class="team-member-content">
-                        <div class="team-member-info">
-                            <img src="images/member2.jpg" alt="Membro 2" />
-                            <h3>Julia Mendes</h3>
-                            <p>Producer & Sound Designer</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 3 -->
-                <a
-                    class="team-member"
-                    href="https://www.linkedin.com/in/jonathan-s-aguiar-662693302/"
-                >
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member3.jpg" alt="Membro 3" />
-                            <h3>Jonathan Aguiar</h3>
-                            <p>Visual Artist</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 4 -->
-                <a class="team-member" href="https://www.linkedin.com/">
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member4.jpg" alt="Membro 4" />
-                            <h3>Igor Alves</h3>
-                            <p>Game Designer</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 5 -->
-                <a
-                    class="team-member"
-                    href="https://www.linkedin.com/in/alexandre-mattos-borges-da-costa-49184342/"
-                >
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member5.jpg" alt="Membro 5" />
-                            <h3>Alexandre Mattos</h3>
-                            <p>2D Artist</p>
-                        </div>
-
-                        <!-- Slideshow de Trabalhos -->
-                        <div class="team-member-portfolio">
-                            <div class="portfolio-carousel">
-                                <img
-                                    src="images/portfolio/alexandre1.jpg"
-                                    alt="Work 1"
-                                    class="active"
-                                />
-                                <img
-                                    src="images/portfolio/alexandre2.jpg"
-                                    alt="Work 2"
-                                />
-                                <img
-                                    src="images/portfolio/alexandre3.gif"
-                                    alt="Work 3"
-                                />
-                            </div>
-                            <div class="portfolio-nav">
-                                <span class="portfolio-dot active"></span>
-                                <span class="portfolio-dot"></span>
-                                <span class="portfolio-dot"></span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 6 -->
-                <a class="team-member" href="https://www.linkedin.com/">
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member6.jpg" alt="Membro 6" />
-                            <h3>Lauro</h3>
-                            <p>Sound Designer & Music Maker</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 7 -->
-                <a class="team-member" href="https://www.linkedin.com/">
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member7.jpg" alt="Membro 7" />
-                            <h3>Florent</h3>
-                            <p>3D Artist</p>
-                        </div>
-
-                        <!-- Slideshow de Trabalhos -->
-                        <div class="team-member-portfolio">
-                            <div class="portfolio-carousel">
-                                <img
-                                    src="images/portfolio/florent1.jpg"
-                                    alt="Work 1"
-                                    class="active"
-                                />
-                            </div>
-                            <div class="portfolio-nav">
-                                <span class="portfolio-dot active"></span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 8 -->
-                <a class="team-member" href="https://www.linkedin.com/">
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member8.jpg" alt="Membro 8" />
-                            <h3>Mads</h3>
-                            <p>2D Artist</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 9 -->
-                <a class="team-member" href="https://www.linkedin.com/">
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member9.jpg" alt="Membro 9" />
-                            <h3>Thomas</h3>
-                            <p>Music Maker</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Membro 10 -->
-                <a
-                    class="team-member"
-                    href="https://www.instagram.com/thigoapxl"
-                >
-                    <div class="team-member-content">
-                        <!-- Conteúdo Normal -->
-                        <div class="team-member-info">
-                            <img src="images/member11.jpg" alt="Membro 11" />
-                            <h3>Thiago</h3>
-                            <p>Developer & 2D Artist</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Adicione outros membros aqui -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 20px;">
+                <span class="tag-sketch" style="color: var(--magic-purple);">Quem assina a obra</span>
+                <h2 class="title-minimal" style="font-size: 3.5rem;">Nossa Guilda</h2>
             </div>
-        </section>
 
-        <section id="contact" class="contact">
-            <h2>Contact</h2>
-            <p>Contact HeartKey Productions through the following means:</p>
-            <ul>
-                <li><a href="mailto:heartkeyestudio@gmail.com">✉️ Email</a></li>
-                <li>
-                    <a href="https://x.com/HeartKeyProd" target="_blank"
-                        >🐦 Twitter (X)</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="https://www.instagram.com/heartkey.studio"
-                        target="_blank"
-                        >📷 Instagram</a
-                    >
-                </li>
-            </ul>
-        </section>
+            <div class="team-grid">
+                
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/allan-ortega.jpg" class="photo-real" alt="Allan Ortega (Dev_AO)">
+                        <img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Allan Avatar 3D/Pixel">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Allan Ortega</div>
+                        <div class="member-role">Lead Dev & Project Creator</div>
+                    </div>
+                </div>
 
-        <footer>
-            <p>&copy; 2026 HeartKey Studio</p>
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/julia-mendes.jpg" class="photo-real" alt="Julia Mendes">
+                        <img src="https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Julia Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Julia Mendes</div>
+                        <div class="member-role">Producer & Sound Designer</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/igor-alves.jpg" class="photo-real" alt="Igor Alves">
+                        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Igor Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Igor Alves</div>
+                        <div class="member-role">Game Designer</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/alexandre-mattos.jpg" class="photo-real" alt="Alexandre Mattos">
+                        <img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Alexandre Avatar 3D/Pixel">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Alexandre Mattos</div>
+                        <div class="member-role">2D Artist</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/lauro.jpg" class="photo-real" alt="Lauro">
+                        <img src="https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Lauro Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Lauro</div>
+                        <div class="member-role">Beat Maker & DJ</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/thomas.jpg" class="photo-real" alt="Thomas">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Thomas Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Thomas</div>
+                        <div class="member-role">Music Maker</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/florent.jpg" class="photo-real" alt="Florent">
+                        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Florent Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Florent</div>
+                        <div class="member-role">3D Artist</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="pin-deco"></div>
+                    <div class="member-photo-container">
+                        <img src="data/image/member/thiago.jpg" class="photo-real" alt="Thiago">
+                        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=500&auto=format&fit=crop" class="photo-avatar" alt="Thiago Avatar">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Thiago</div>
+                        <div class="member-role">Game Dev</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="outsourcing" class="contact-section">
+        
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+            <span class="tag-sketch" style="color: var(--heart-red);">Sua vez</span>
+            <h2 class="title-minimal" style="font-size: 3rem;">Vamos forjar algo novo?</h2>
+        </div>
+
+        <div class="notebook-paper">
+            <h3 style="font-family: 'Caveat', cursive; font-size: 2.8rem; color: var(--magic-purple); line-height: 2.5rem; margin-top: -10px;">Dear HeartKey Studio...</h3>
+            <p style="font-family: 'Caveat', cursive; font-size: 1.5rem; color: #555; line-height: 2.5rem;">Eu tenho uma ideia incrível e preciso da ajuda de vocês.</p>
+            
+            <form id="contact-form-notebook" class="contact-form" action="https://formspree.io/f/xaqvrrwq" method="POST">
+                <div class="form-row">
+                    <input type="text" name="nome" class="notebook-input" placeholder="Meu nome / estúdio é..." required>
+                    <input type="email" name="email" class="notebook-input" placeholder="Meu e-mail é..." required>
+                </div>
+                
+                <select name="servico" class="notebook-input" style="appearance: none; cursor: pointer;" required>
+                    <option value="" disabled selected>Gostaria de ajuda com...</option>
+                    <option value="Arte e Modelagem">🎨 Arte 2D, Pixel Art ou Modelagem 3D</option>
+                    <option value="Programacao">💻 Programação (Godot, Unity, JS)</option>
+                    <option value="Audio e SFX">🎵 Trilha Sonora ou Sound Design</option>
+                    <option value="Jogo Completo">🚀 Um jogo completo (Full-dev / Co-dev)</option>
+                </select>
+                
+                <textarea name="mensagem" class="notebook-input" placeholder="Aqui vão alguns detalhes sobre o projeto..." required></textarea>
+                
+                <button type="submit" id="btn-enviar-carta" class="submit-btn">Enviar Carta ✉️</button>
+            </form>
+
+            <div id="status-carta" style="font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--magic-purple); margin-top: 20px; line-height: 2.5rem; display: none;"></div>
+        </div>
+
+        <footer class="site-footer">
+            <p>© 2026 HeartKey Studio. Forjando mundos com amor e código.</p>
+            <div class="footer-links">
+                <a href="#">Steam</a>
+                <a href="#">Twitter (X)</a>
+                <a href="#">Instagram</a>
+                <a href="#">Discord</a>
+            </div>
         </footer>
-        <script src="javascript/script.js"></script>
-    </body>
+
+    </section>
+
+    <button id="back-to-top" class="back-to-top" title="Voltar ao início">
+        <span class="arrow-up">↑</span>
+        <span>Topo</span>
+    </button>
+
+    <script>
+        const items = document.querySelectorAll('.service-item');
+        const medias = document.querySelectorAll('.display-media');
+
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                items.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const target = item.getAttribute('data-target');
+                medias.forEach(media => media.classList.remove('active'));
+                document.getElementById(`media-${target}`).classList.add('active');
+            });
+        });
+
+        // ==========================================
+        // SCROLL OBSERVER (FADE IN MAGICO)
+        // ==========================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Dispara quando 15% do elemento entra na tela
+        };
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    // Descomente a linha abaixo se quiser que a animação rode APENAS UMA VEZ
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // Caça todos os elementos que têm a classe 'fade-in' e coloca o olheiro neles
+        document.querySelectorAll('.fade-in').forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // ==========================================
+        // BOTÃO VOLTAR AO TOPO (LÓGICA)
+        // ==========================================
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        // Fica de olho no scroll da página
+        window.addEventListener('scroll', () => {
+            // Se rolou mais de 400 pixels para baixo, mostra o botão
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Quando clica, rola suavemente para cima
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Faz o deslize ser amanteigado
+            });
+        });
+
+        // ==========================================
+        // ENVIO DO FORMULÁRIO VIA AJAX (FORMSPREE)
+        // ==========================================
+        const formularioNotebook = document.getElementById("contact-form-notebook");
+        const botaoEnviar = document.getElementById("btn-enviar-carta");
+        const statusCarta = document.getElementById("status-carta");
+
+        formularioNotebook.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Impede o navegador de recarregar a página
+            
+            // 1. Feedback visual imediato de carregamento
+            botaoEnviar.innerText = "Enviando... ⏳";
+            botaoEnviar.disabled = true;
+
+            // 2. Empacota os dados digitados no caderno
+            const dadosForm = new FormData(formularioNotebook);
+            
+            try {
+                // 3. Faz o envio em background para o Formspree
+                const response = await fetch(formularioNotebook.action, {
+                    method: formularioNotebook.method,
+                    body: dadosForm,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                // 4. Se deu tudo certo
+                if (response.ok) {
+                    statusCarta.style.color = "var(--magic-purple)";
+                    statusCarta.innerText = "Obrigado! Sua carta voou até nosso estúdio. Responderemos em breve com muito amor! 🕊️❤️";
+                    statusCarta.style.display = "block";
+                    
+                    formularioNotebook.reset(); // Limpa os campos
+                    formularioNotebook.style.display = "none"; // Esconde o form para a mensagem reinar sozinha
+                } else {
+                    // Se o Formspree recusar ou o ID estiver errado
+                    const respostaErro = await response.json();
+                    statusCarta.innerText = respostaErro.errors ? respostaErro.errors.map(err => err.message).join(", ") : "Ops! Ocorreu um problema na entrega da carta.";
+                    statusCarta.style.color = "var(--heart-red)";
+                    statusCarta.style.display = "block";
+                    
+                    botaoEnviar.innerText = "Enviar Carta ✉️";
+                    botaoEnviar.disabled = false;
+                }
+            } catch (error) {
+                // Se a internet cair no meio do caminho
+                statusCarta.innerText = "Erro de conexão. Verifique se o seu sinal está estável para enviar a carta!";
+                statusCarta.style.color = "var(--heart-red)";
+                statusCarta.style.display = "block";
+                
+                botaoEnviar.innerText = "Enviar Carta ✉️";
+                botaoEnviar.disabled = false;
+            }
+        });
+    </script>
+</body>
 </html>

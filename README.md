@@ -1,2 +1,0 @@
-# home
-Website's homepage
