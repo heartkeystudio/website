@@ -733,38 +733,42 @@
         }
 
         /* ==========================================
-           10. AJUSTES PARA MOBILE (TELEMÓVEL)
+           10. AJUSTES PARA MOBILE & TABLET
            ========================================== */
-        @media (max-width: 768px) {
-            /* 1. Navbar: Escondemos os links secundários para não esmagar a logo */
+        @media (max-width: 900px) {
+            /* Navbar e Geral */
             .nav-links a:not(.btn-nav) { display: none; }
             .nav-container { padding: 0 15px; }
 
-            /* 2. Hero (Topo): Organiza a Chave e o Texto */
-            .hero-header { flex-direction: column-reverse; text-align: center; }
-            /* Coloca a chave acima do texto e mais pequena */
+            /* Hero - Empilha tudo e tira a chave da posição absoluta */
+            .hero-header { 
+                flex-direction: column-reverse; 
+                text-align: center; 
+                margin-top: 30px; /* Afasta do menu */
+            }
             .hero-art-floating { 
                 position: relative; 
                 top: 0; right: 0; 
-                width: 220px; 
-                margin: 0 auto -20px auto; 
+                width: 220px; /* Tamanho contido e fofo pro mobile */
+                max-width: 100%;
+                margin: 0 auto 30px auto; /* Centraliza a chave e afasta do título */
             }
             .hero-text-content { z-index: 2; position: relative; }
-            .title-minimal { font-size: 2.8rem; }
+            .title-minimal { font-size: 3rem; }
             
-            /* Botões ocupam 100% da largura no telemóvel */
             .btn-group { flex-direction: column; width: 100%; }
             .btn-group a { width: 100%; text-align: center; }
 
-            /* 3. Serviços: Força a caixa de imagens a ter largura e diminui a altura */
+            /* Layout de Serviços */
+            .services-layout { flex-direction: column; gap: 40px; margin-top: 60px; }
             .services-layout > div:nth-child(2) { width: 100% !important; }
-            .services-display { height: 300px; border-radius: 15px; }
+            .services-display { height: 350px; border-radius: 15px; width: 100%; }
 
-            /* 4. O Caderno: Ajusta a margem e o tamanho da fonte para não vazar a tela */
+            /* O Caderno de Orçamento */
+            .form-row { flex-direction: column; gap: 0; }
             .notebook-paper { 
-                padding: 40px 15px 30px 40px; /* Reduz o espaçamento lateral */
-                transform: rotate(0deg); /* Tira a rotação no telemóvel para não criar barras de scroll horizontais */
-                /* Desenha a margem vermelha mais para a esquerda (30px) */
+                padding: 40px 15px 30px 40px; 
+                transform: rotate(0deg); 
                 background-image: 
                     linear-gradient(90deg, transparent 30px, rgba(230, 57, 70, 0.3) 30px, rgba(230, 57, 70, 0.3) 32px, transparent 32px),
                     linear-gradient(#e5e5e5 1px, transparent 1px);
@@ -772,8 +776,6 @@
             .notebook-paper h3 { font-size: 2rem !important; }
             .notebook-paper p { font-size: 1.2rem !important; line-height: 1.8rem !important; margin-bottom: 20px;}
             .notebook-input { font-size: 1.4rem; }
-            
-            /* O botão de enviar fica largo e alinhado */
             .submit-btn { width: 100%; font-size: 1.6rem; transform: rotate(0deg); }
         }
 
@@ -1086,10 +1088,10 @@
         <footer class="site-footer">
             <p>© 2026 HeartKey Studio. Forjando mundos com amor e código.</p>
             <div class="footer-links">
-                <a href="#">Steam</a>
-                <a href="#">Twitter (X)</a>
-                <a href="#">Instagram</a>
-                <a href="#">Discord</a>
+                <a href="https://store.steampowered.com/curator/45785248">Steam</a>
+                <a href="https://x.com/HeartKeyStudio">Twitter (X)</a>
+                <a href="https://www.instagram.com/heartkey.studio/">Instagram</a>
+                <a href="https://discord.gg/PBq2P57c">Discord</a>
             </div>
         </footer>
 
